@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import NewExpense from './components/NewExpense/NewExpense';
-import ExpenseList from './components/Expenses/ExpenseList';
+import ExpenseList from './components/Expenses/table/ExpenseList';
 
 const initialExpenses = [
   {
@@ -36,7 +36,6 @@ function App() {
 
   return (
     <div>
-      <h2>Let's Get Started</h2>
       <NewExpense addExpense={addExpense} />
       <ExpenseList expenses={expenses} />
     </div>

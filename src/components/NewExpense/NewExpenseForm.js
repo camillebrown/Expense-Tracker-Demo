@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function NewExpenseForm({ onSave }) {
+export default function NewExpenseForm({ onSave, toggle }) {
   const [formFields, setFormFields] = useState({
     title: '',
     amount: '',
@@ -9,14 +9,6 @@ export default function NewExpenseForm({ onSave }) {
 
   const changeHandler = (e) => {
     setFormFields({ ...formFields, [e.target.name]: e.target.value });
-
-    // If you need the previous state in state changes, use a function
-    // React schedules state updates so the above approach may not take into account the latest state snapshot
-    // Below will always keep an updated record of state
-
-    // setFormFields((prevState) => {
-    //   return { ...prevState, [e.target.name]: e.target.value };
-    // });
   };
 
   const submitForm = (e) => {
@@ -28,6 +20,7 @@ export default function NewExpenseForm({ onSave }) {
       amount: '',
       date: '',
     });
+    toggle();
   };
 
   return (
@@ -66,6 +59,9 @@ export default function NewExpenseForm({ onSave }) {
         </div>
       </div>
       <div className="new_exp_actions">
+        <button type="button" onClick={toggle}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
